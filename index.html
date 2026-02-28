@@ -13,58 +13,156 @@
         <div class="hero">
           <div>
             <h1 class="name">Lindsey B.</h1>
-            <p class="subtitle">Computer Engineering Student"
+            <p class="subtitle">Computer Engineering Student
             </p>
           </div>
 
+          <!--Navigation Tabs-->
           <nav class="nav">
             <a href="#projects">Projects</a>
-            <a href=#contact>Contact</a>
-            <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+            <a href="#contact">Contact</a>
+            <a href="https://github.com/greyjediak" target="_blank" rel="noopener">GitHub</a>
+            <a href="#hobbies">Hobbies</a> <!--Need to add this section-->
+            <a href="#about">About</a> <!--Need to add this section-->
           </nav>
         </div>
       </div>
     </header>
 
-    <h3>Electronic Nose</h3>
-      <h4>Objectives:</h4>
-      <p>Develop a low cost electronic nose by interfacing six sensors to a microcontroller</p>
-    <p>Read sensor data and interpret into meaningful units</p>
-    <p>Provide insight into the various health conditions that breath samples uncover</p>
-    <p>Current Work: Designing and building a breath acetone sensing system<br></p>
-    <p>Involves PCB design, embedded programming and possibly will implement machine learning to differentiate between mixed samples.</p>
-    <h3>PCB Layout Design</h3>
-    <a href="assets/electronicnose/TGSPCBDesign.png"><img src="assets/electronicnose/TGSPCBDesign.png" Width="250" Height="400"></a>
-    <h3>Acetone Sensor Schematic With TGS1820</h3>
-    <a href="assets/electronicnose/TGSPCBSchematic.png"><img src="assets/electronicnose/TGSPCBSchematic.png" Width="400" Height=400"></a>
-    <p>The goal as of now is to interface the TGS sensor with the Seeed Xiao microcontroller. Since the sensor has a response time of 40s, to decrease sensor<br>
-    response time, early inference will be used on the transient response. THe TGS is a MEMS hot wire sensor and the voltage difference across the constructed measuring<b>
-      circuit will be used to calibrate meaningful acetone readings.
-    </b></p>
-    
+    <main class="container">
+      <section id="projects" class="section"> <!--Projects Section-->
+        <h2 class="section-title">Projects</h2>
 
-    <h3>Cleanroom Reasarch Assistant</h3>
-    <p>Learning and training on cleanroom operations and practices in photolithography and spin coating.
-    Creating training and publicity material for undergraduates, faculty, and visitors.</p>
-    <a href="assets/cleanroom/CleanroomGroupPhoto.heic"><img src="assets/cleanroom/CleanroomGroupPhoto.jpg" Width="400" Height="250"></a>
-    <a href="assets/cleanroom/Photolithography Procedural Slides.pdf">View Photolithography Procedure Here</a>
-    <p>Team Members: Juliet Correll, Anirban Swashkar, Joseph Tzomampkis, Lindsey Bowen</p>
-    <h4>Manim Animations Created for Photolithography Video</h4>
-    <video width="640" height="360" controls>
-  <source src="assets/cleanroom/PhotolithographyStretched.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>   
-     <video width="640" height="360" controls>
-  <source src="assets/cleanroom/SpinCoatedWafer2D.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>   
+        <!-- Electronic Nose -->
+        <article class="card">
+          <div class="card-header">
+            <h3>Electronic Nose</h3>
+            <p class="muted">Sensors | Embedded | PCB Design | ML (pending)</p>
+          </div>
 
+          <div class="card-body">
+            <h4>Objectives</h4>
+            <ul>
+              <li>Develop a low-cost electronic nose by interfacing six sensors to a microcontroller</li>
+              <li>Read sensor data and interpret it into meaningful units</li>
+              <li>Provide some insight into underlying health conditions that breath samples indicate</li>
+            </ul>
 
-    <h3>BFit Personal Health Tracking App</h3>
-    <p>Building a personal workout app for trainers to log clients' workouts, organize routines, and share feedback with client</p>
-    <h4>Tools:</h4>
-    <p>Flutter + Firebase</p>
-    
-    
+            <p class="muted">
+              Current tasks: Designing and building a breath acetone sensing system.
+              Involves PCB design, programming in the Arduino IDE. Potentially, ML will
+              be implemented to differentiate between samples when integrating all sensors together.
+            </p>
+
+            <div class="grid">
+              <a class="media" href="assets/electronicnose/TGSPCBSchematic.png" target="_blank" rel="noopener">
+                <img src="assets/electronicnose/TGSPCBSchematic.png" alt="Acetone Sensor Schematic with TGS1820" />
+                <span>Acetone Sensor Schematic</span>
+              </a>
+              <a class="media" href="assets/electronicnose/TGSPCBDesign.png" target="_blank" rel="noopener">
+                <img src="assets/electronicnose/TGSPCBDesign.png" alt="Acetone PCB Design" />
+                <span>Acetone PCB Layout</span>
+              </a>
+            </div>
+
+            <p class="note">
+              Goal: Interface the TGS sensor with the Seeed Xiao nRF52480 Plus. Since response
+              time is ~40s, and our intended target response time is 20s, early inference will be 
+              applied to the transient response. The TGS is a MEMS hot-wire sensor and the bridge
+              voltage difference is used to calibrate acetone readings.
+            </p>
+          </div>
+        </article>
+
+         <!--Cleanroom-->
+        <article class="card">
+          <div class = "card-header">
+            <h3>Cleanroom Research Assistant</h3>
+            <p class="muted">Photolithograpy | Spin Coating | Training Material</p>
+          </div>
+
+          <div class="card-body">
+            <p>
+              Training and gaining experience in cleanroom operations and practices in photolithography and spin 
+              coating. Creating training and publicity material for undergraduates, faculty, and visitors.
+            </p>
+
+            <div class="grid">
+              <a class="media" href="assets/cleanroom/CleanroomGroupPhoto.jpg" target="_blank" rel="noopener">
+                <img src="assets/cleanroom/CleanroomGroupPhoto.jpg" alt="Cleanroom Group Photo" />
+                <span>Group Photo</span>
+              </a>
+
+              <a class="media media-link" href="assets/cleanroom/Photolithography Procedural Slides.pdf" target="_blank" rel="noopener">
+                <div class="file">
+                  <div class="file-badge">PDF</div>
+                  <div>
+                    <strong>Photolithography Procedure</strong>
+                    <div class="muted">Open in new tab</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <p class="muted">
+              Team members: Juliet Correll, Anirban Swashkar, Joseph Tzomampkis, Lindsey Bowen
+            </p>
+            
+            <h4>Manim Animations:</h4>
+            <div class="videos">
+              <video controls preload="metadata">
+                <source src="assets/cleanroom/PhotolithographyStretched.mp4" type="video/mp4" />
+              </video>
+
+              <video controls preload="metadata">
+                <source src="assets/cleanroom/SpinCoatedWafer2D.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </article>
+
+        <article>
+          <div class="card-header">
+            <h3>BFit Personal Health Tracking App</h3>
+            <p class="muted">Flutter | Firebase</p>
+          </div>
+
+          <div class="card-body">
+            <p>
+              Building a personal workout app for freelance trainers to log clients' workouts,
+              organize routines, and share feedback with clients.
+            </p>
+
+            <h4>Tools</h4>
+            <ul>
+              <li>Flutter</li>
+              <li>Firebase</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <section id="contact" class="section">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="card">
+          <div class="card-body">
+            <p class="muted">Links:</p>
+            <div class="links"> <!--Bottome tab links-->
+              <a href="https://github.com/" target="__blank" rel="noopener">GitHub</a>
+              <a href="www.linkedin.com/in/lindsey-bowen-265466296" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="mailto:lcbowen1@crimson.edu">Email</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container muted">© <span id="y"></span>Lindsey B.</div>
+    </footer>
+
+    <script>
+      document.getElementBYId("y").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
