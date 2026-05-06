@@ -104,59 +104,34 @@ export const projects = [
     {
         id: "henderson",
         title: "IP Henderson",
-        subtitle: "Foxboro | Spin Coating | Training Material",
+        subtitle: "Foxboro I/A | HMI Screen Design | FBM 233",
         image: "/assets/coop/flowcontrol.JPG",
         summary: 
-            "Drives upgrade for Internation Paper in Henderson, KY.",
+            "Drives upgrade for International Paper in Henderson, KY.",
         details:
-            "Created Manim animations, tutorial powerpoints and videos, and gave brief tours at E-Day about the cleanroom facilities.",
+            "Supported drives upgrade, built hardware testbed with redundant FBM233 modules to communicate with FCP280s, and built testing screens to monitor drive status.",
             link: "#",
         images: [
             {
-                src: "/assets/cleanroom/bay2.JPG",
-                caption: "Cleanroom Bays"
+                src: "/assets/coop/ATeam.JPG",
+                caption: "Geared up to work"
             },
             {
-                src: "/assets/cleanroom/four.JPG",
-                caption: "Cleanroom Assistants"
+                src: "/assets/coop/CPandFBM.jpg",
+                caption: "Testing hardware (preassembly)"
             },
             {
-                src: "/assets/cleanroom/lwafer.jpeg",
-                caption: "Patterned Wafer"
-            },
-            {
-                src: "/assets/cleanroom/bluelight.png",
-                caption: "UV Exposure (taken safely)"
+                src: "/assets/coop/pinging.JPG",
+                caption: "Checking communication with PLC"
             },
         
         ],
-        videos: [
-            {
-                src: "/assets/cleanroom/SpinCoatedWafer2D.mp4",
-                caption: "",
-            },
-            {
-                src: "/assets/cleanroom/PhotolithographyStretched.mp4",
-                caption: "",
-            }
-            
-        ],
         links: [
             {
-                label: "Powerpoint Training Materials",
+                label: "Hardware Testbed Sketch (coming soon)",
                 url: "/assets/cleanroom/Photolithography Procedural Slides.pdf",
                 type: "pdf"
             },
-            {
-                label: "Manim Spin Coating Animation",
-                url: "https://github.com/greyjediak/Manim-Cleanroom-Animations/blob/main/spin.py",
-                type: "code"
-            },
-            {
-                label: "Manim Photolithography Example",
-                url: "https://github.com/greyjediak/Manim-Cleanroom-Animations/blob/main/light.py",
-                type: "code"
-            }
         ]
 
     },
