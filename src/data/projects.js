@@ -135,6 +135,14 @@ export const projects = [
         ]
 
     },
+    {
+        id: "status-board",
+        title: "Status Board - Mini Project",
+        subtitle: "React | JS | CSS",
+        image: "/assets/minprojects/status_board_layout",
+        summary: "A quite simple full-stack project built with React and JavaScript.",
+        details: "Upping full stack exposure one step at a time."
+    }
 
     
 
