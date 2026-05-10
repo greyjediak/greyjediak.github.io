@@ -1,38 +1,37 @@
 import { useParams } from "react-router-dom";
-import { projects } from "./data/projects";
+import { projects } from "./data/travels";
 
-function ProjectPage() {
+function TravelPage() {
   const { id } = useParams();
-  const project = projects.find((p) => p.id === id);
+  const travel = travels.find((t) => t.id === id);
 
-  if (!project) {
+  if (!travel) {
     return (
       <main className="container">
-        <h1>Project not found</h1>
+        <h1>Place not found</h1>
       </main>
     );
   }
 
   return (
     <main className="container project-page">
-      <h1>{project.title}</h1>
-      <p className="muted">{project.subtitle}</p>
+      <h1>{travel.title}</h1>
+      <p className="muted">{travel.subtitle}</p>
+
       <section className="about-hero">
         <div className="about-photo-wrap">
-          <img src={project.image} alt={project.title} className="about-photo" />
+          <img src={travel.image} alt={travel.title} className="about-photo" />
         </div>
       </section>
-      
-      
-
+    
       <section>
         <h2>Overview</h2>
-         <p>{project.summary}</p>
+         <p>{travel.summary}</p>
       </section>
 
       <section>
         <h2>Details</h2>
-        <p>{project.details}</p>
+        <p>{travel.details}</p>
       </section>
 
       <section className="image-grid">
@@ -41,7 +40,6 @@ function ProjectPage() {
             <a href={img.src} target="_blank" rel="noopener noreferrer">
               <img src={img.src} alt={img.caption} loading="lazy" />
             </a>
-            
             <figcaption>{img.caption}</figcaption>
           </figure>
         ))}

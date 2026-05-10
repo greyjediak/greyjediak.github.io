@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { coffeeCards } from "./data/coffeeCards";
 import { travels } from "./data/travels";
 
@@ -26,6 +28,7 @@ function FlipCard({ card }) {
 function AboutPage() {
     return (
         <main className="container about-page">
+            
             <section className="about-hero">
                 <div className="about-text">
                     <p className="eyebrow">About Me</p>
@@ -53,7 +56,7 @@ function AboutPage() {
                 </div>
             </section>
 
-            <section id="hobbies" className="section-projects-sections">
+            <section id="hobbies" className="about-feature-section">
                 <div className="section-heading">
                     <p className="eyebrow">Hobbies</p>
                     <h2 className="section-title">Coffee</h2>
@@ -105,16 +108,25 @@ function AboutPage() {
                 </div>
             </section>
 
-            <section id="travels" className="section-projects-sections">
+            <section id="travels" className="about-feature-section">
                 <div className="section-heading">
                     <p className="eyebrow">Travels</p>
                     <h2 className="section-title">Places</h2>
                     <p className="section-intro">I haven't been too many places, but I'm always up for something new.</p>
                 </div>
-                <div className="flip-grid">
-                    {travels.map((card) => (
-                        <FlipCard card={card} key={card.src} />
+                <div className="project-grid">
+                    {travels.map((travel) => (
+                        <Link
+                             to={`/travels/${travel.id}`}
+                            key={travel.id}
+                            className="project-card"
+                        >
+                            <img src={travel.image} alt={travel.title} />
+                            <h3>{travel.title}</h3>
+                            <p>{travel.subtitle}</p>
+                        </Link>
                     ))}
+                    
                 </div>
             </section>
 

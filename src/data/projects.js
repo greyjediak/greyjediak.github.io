@@ -139,9 +139,50 @@ export const projects = [
         id: "status-board",
         title: "Status Board - Mini Project",
         subtitle: "React | JS | CSS",
-        image: "/assets/minprojects/status_board_layout",
+        image: "/assets/miniprojects/status_board_layout.png",
         summary: "A quite simple full-stack project built with React and JavaScript.",
-        details: "Upping full stack exposure one step at a time."
+        details: "Upping full stack exposure one step at a time.",
+        images: [
+            {
+                src: "/assets/coop/ATeam.JPG",
+                caption: "Geared up to work"
+            },
+        ],
+        links: [
+            {
+                label: "GitHub Link",
+                url: "https://github.com/greyjediak/StatusBoard",
+                type: "Code"
+            },
+            
+        ]
+    },
+    {
+        id: "stm32-react-time",
+        title: "React Timer - Mini Project",
+        subtitle: "STM32L476RG | HAL | 7-Seg-Display",
+        image: "/assets/labstuff/stm32reactboardsetup.jpg",
+        summary: "A simple STM32 project involving timers, a seven segment LED display, and interrupts.",
+        details: "Instead of using Sys_Timer, a general purpose timer on the STM32 was configured to overflow every 1ms. An interrupt was used to execute when the button was pressed, and begin the timer.",
+        images: [],
+        videos: [
+            {
+                src: "/assets/labstuff/STM32ReactDemoCountdown.mp4",
+                caption: "Countdown",
+            },
+            {
+                src: "/assets/labstuff/STM32ReactDemo.mp4",
+                caption: "Lab Demo",
+            }
+        ],
+        links: [
+            {   
+                label: "Github Code",
+                url: "https://github.com/greyjediak/react_time_stm32",
+                type: "Code"
+            },
+
+        ]
     }
 
     
