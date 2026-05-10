@@ -25,10 +25,12 @@ function FlipCard({ card }) {
     );
 }
 
+
+
 function AboutPage() {
     return (
         <main className="container about-page">
-            
+
             <section className="about-hero">
                 <div className="about-text">
                     <p className="eyebrow">About Me</p>
@@ -106,6 +108,12 @@ function AboutPage() {
                         <FlipCard card={card} key={card.src} />
                     ))}
                 </div>
+                <div className="note">
+                    <p>Click for my coffeehouse playlists</p>
+                    <a href ="https://open.spotify.com/playlist/49TrC04bBFXSuuHnaMBVZC?si=666c7898b4b14284">red converse<br></br></a>
+                    <a href ="https://open.spotify.com/playlist/4XKEp9MHVElgAkVnc82YzR?si=8ee47b5156944526">yellow converse<br></br></a>
+                    <a href ="https://open.spotify.com/playlist/3bZesnZV7jmfc5EaFEjEvc?si=06511bc494504e2c">auburn converse</a>
+                </div>
             </section>
 
             <section id="travels" className="about-feature-section">
@@ -114,16 +122,19 @@ function AboutPage() {
                     <h2 className="section-title">Places</h2>
                     <p className="section-intro">I haven't been too many places, but I'm always up for something new.</p>
                 </div>
+
                 <div className="project-grid">
                     {travels.map((travel) => (
                         <Link
                              to={`/travels/${travel.id}`}
                             key={travel.id}
-                            className="project-card"
+                            className="project-tile"
                         >
-                            <img src={travel.image} alt={travel.title} />
-                            <h3>{travel.title}</h3>
-                            <p>{travel.subtitle}</p>
+                            <img src={travel.image} alt={travel.title} loading="lazy"/>
+                            <div className="project-tile-content">
+                                <h3>{travel.title}</h3>
+                                <p>{travel.subtitle}</p>
+                            </div>
                         </Link>
                     ))}
                     

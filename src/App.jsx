@@ -4,6 +4,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import ProjectPage from "./ProjectPage";
 import AboutPage from "./AboutPage";
 import ContactPage from "./ContactPage";
+import TravelPage from "./TravelPage";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/project/:id" element={<ProjectPage />} />
+        <Route path="/travels/:id" element={<TravelPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>

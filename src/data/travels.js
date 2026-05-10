@@ -3,12 +3,14 @@ export const travels = [
         id: "milwaukee",
         title: "Milwaukee, Wisconsin",
         subtitle: "Beer, cheese, and baseball",
-        image: "",
+        image: "/assets/travels/americanfamfield.JPG",
         summary: "",
         images: [
             {
-                src: "",
-                caption: ""
+                src: "/assets/travels/americanfamfield.JPG",
+                alt: "American Family Field",
+                title: "American Family Field",
+                text: "Cool baseball stadium",
 
             },
         ]
@@ -44,10 +46,28 @@ export const travels = [
     {
         id: "metropolis",
         title: "Metropolis, Illinois",
-        subtitle: "Superman.",
-        image: "",
-        summary: "",
+        subtitle: "United States' Largest Superman Statue.",
+        image: "/assets/travels/supercity.JPG",
+        summary: "Didn't really do much here besides find the statue and drink some Superman themed beverages.",
         images: [
+            {
+                src: "/assets/travels/cutouts.JPG",
+                alt: "Posing",
+                title: "Posing as superheroes",
+                text: "These are literally just out on the street",
+            },
+            {
+                src: "/assets/travels/cutouts.JPG",
+                alt: "Posing",
+                title: "Posing as superheroes",
+                text: "These are literally just out on the street",
+            },
+            {
+                src: "/assets/travels/cutouts.JPG",
+                alt: "Posing",
+                title: "Posing as superheroes",
+                text: "These are literally just out on the street",
+            }
 
         ]
 

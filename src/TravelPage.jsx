@@ -1,5 +1,27 @@
 import { useParams } from "react-router-dom";
-import { projects } from "./data/travels";
+import { travels } from "./data/travels";
+
+function TravelImageCard({ image }) {
+  return (
+    <a
+      href={image.src}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flip-card"
+    >
+      <div className="flip-card-inner">
+        <div className="flip-card-front">
+          <img src={image.src} alt={image.alt || image.title} loading="lazy" />
+        </div>
+
+        <div className="flip-card-back">
+          <h3>{image.title}</h3>
+          <p>{image.text}</p>
+        </div>
+      </div>
+    </a>
+  );
+}
 
 function TravelPage() {
   const { id } = useParams();
@@ -12,7 +34,7 @@ function TravelPage() {
       </main>
     );
   }
-
+  
   return (
     <main className="container project-page">
       <h1>{travel.title}</h1>
@@ -29,24 +51,19 @@ function TravelPage() {
          <p>{travel.summary}</p>
       </section>
 
-      <section>
-        <h2>Details</h2>
-        <p>{travel.details}</p>
-      </section>
-
-      <section className="image-grid">
-        {project.images.map((img, i) => (
-          <figure key={i} className="image-card">
-            <a href={img.src} target="_blank" rel="noopener noreferrer">
-              <img src={img.src} alt={img.caption} loading="lazy" />
-            </a>
-            <figcaption>{img.caption}</figcaption>
-          </figure>
-        ))}
-      </section>
+        {travel.images?.length > 0 && (
+            <section>
+                <h2>Photos</h2>
+                <div className="flip-grid">
+                    {travel.images.map((image) => (
+                        <TravelImageCard image={image} key={image.src} />
+                    ))}
+                </div>
+            </section>
+        )}  
 
       
-      {project.videos && project.videos.length > 0 && (
+      {travel.videos?.length > 0 && (
         <section className="section">
           <div className="section-heading">
             <p className="eyebrow">Videos</p>
@@ -54,7 +71,7 @@ function TravelPage() {
           </div>
           
           <div className="video-grid">
-            {project.videos.map((video, index) => (
+            {travel.videos.map((video, index) => (
               <figure className="video-card" key={index}>
                 <video controls preload="metadata">
                   <source src={video.src} type="video/mp4" />
@@ -67,34 +84,8 @@ function TravelPage() {
         </section>
       )}
 
-      {project.links?.length > 0 && (
-        <section className="project-links">
-          <div className="section-heading">
-            <p className="eyebrow">Links</p>
-          </div>
-
-          <div className="links-grid">
-            {project.links.map((links, i) => (
-              <a
-                key={i}
-                href={links.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="resource-card"
-              >
-
-                <span className="resource-type">{links.type.toUpperCase()}</span>
-                <strong>{links.label}</strong>
-              </a>
-            ))}
-          </div>
-      </section>
-      )}
-
-      
-
     </main>
   );
 }
 
-export default ProjectPage;
+export default TravelPage;
