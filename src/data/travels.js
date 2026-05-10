@@ -7,11 +7,16 @@ export const travels = [
         summary: "",
         images: [
             {
-                src: "/assets/travels/americanfamfield.JPG",
-                alt: "American Family Field",
-                title: "American Family Field",
+                src: "/assets/travels/milwaukeerooftop.JPG",
+                alt: "Central Standard Crafthouse & Kitchen",
+                title: "Central Standard Crafthouse & Kitchen",
                 text: "Cool baseball stadium",
-
+            },
+            {
+                src: "/assets/travels/discourse.JPG",
+                alt: "Discourse Coffee",
+                title: "Discourse Coffee",
+                text: "A really cool underground coffee shop next to the Milwaukee School of Engineering",
             },
         ]
     },
