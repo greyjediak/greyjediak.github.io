@@ -45,7 +45,7 @@ export const projects = [
         id: "gbr-toy",
         title: "GBR Toy - Embedded Gift",
         subtitle: "ESP32-S3 | Adafruit TFT | Aesprite",
-        image: "/assets/labstuff/stm32reactboardsetup.jpg",
+        image: "/assets/miniprojects/geeber_background.jpg",
         summary: "A custom ESP project utilizing an LCD screen and hand drawn sprites",
         details: "As a gift to another engineer, this toy featured a jumping game styled to look like a PCB, offscreen sprite drawing for smooth rendering, and lots of little engineering jokes.",
         images: [],
@@ -162,12 +162,6 @@ export const projects = [
         image: "/assets/miniprojects/status_board_layout.png",
         summary: "A quite simple full-stack project built with React and JavaScript.",
         details: "Upping full stack exposure one step at a time.",
-        images: [
-            {
-                src: "/assets/coop/ATeam.JPG",
-                caption: "Geared up to work"
-            },
-        ],
         links: [
             {
                 label: "GitHub Link",
@@ -201,6 +195,63 @@ export const projects = [
                 url: "https://github.com/greyjediak/react_time_stm32",
                 type: "Code"
             },
+
+        ]
+    },
+    {
+        id: "coffee-ml",
+        title: "Predicting Global Coffee Quality With ML",
+        subtitle: "XGBoost | Google Colab | Matplotlib",
+        image: "/assets/machinelearning/coffee_cm.png",
+        summary: "Machine Learning Project Using regression and classification models to predict coffee quality",
+        details: "A dataset form Coffee Quality Institute was used, stripping the columns that cupping score is calculated from. From factors like altitude the coffee was grown at, to variety, to color and moisture, classification and regression models sought to predict exact coffee scores, and a good/bad score.",
+        images: [
+            {
+                src: "/assets/machinelearning/xgboost_reg_model_score_graph.png",
+                caption: "XGBoost Regression Model Predicted Scores vs. Actual Scores"
+            },
+            {
+                src: "/assets/machinelearning/xgboost_reg_model_importance.png",
+                caption: "Importance Graph of Features"
+            },
+            {
+                src: "/assets/machinelearning/xgboost_class_model_CM.png",
+                caption: "Confusion Matrix for XGBoost Classification Model"
+            },
+            {
+                src: "/assets/machinelearning/coffee_cm.png",
+                caption: "Confusion Matrix for XGBoost Classification Model with Hyperparameter Tuning"
+            },
+            {
+                src: "/assets/machinelearning/rf_reg_model_score_graph.png",
+                caption: "Random Forest Regression Model Predicted vs. Actual Scores"
+            },
+            {
+                src: "/assets/machinelearning/rf_reg_model_importance.png",
+                caption: "RF Regression Model Feature Importance",
+            },
+            {
+                src:"/assets/machinelearning/rf_class_cm.png",
+                caption: "Random Forest Classification Model Confusion Matrix"
+            },
+            {
+                src: "/assets/machinelearning/rf_class_model_importance.png",
+                caption: "Random Forest Classification Model Feature Importance"
+            }
+
+        ],
+        links: [
+            {   
+                label: "Powerpoint Presentation",
+                url: "assets/machinelearning/Predicting Global Coffee Quality Using Machine Learning.pdf",
+                type: "Powerpoint"
+            },
+            {
+                label: "Python Jupyter Notebook",
+                url: "https://colab.research.google.com/drive/140kOYvkrj87B0JPQqqtAP_s3wYn_s3Ps?usp=sharing",
+                type: "Code"
+            }
+
 
         ]
     }

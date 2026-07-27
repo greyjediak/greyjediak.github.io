@@ -1,5 +1,5 @@
 // --- PCB TRACE BACKGROUND ---
-function PCBBackground() {
+export default function PCBBackground() {
   const baseTraces = [
     // Bottom-left cluster
     'M 0,580 H 180 V 440 H 520',
@@ -39,14 +39,21 @@ function PCBBackground() {
 
   return (
     <svg
-      className="absolute inset-0 w-full h-full"
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 h-full w-full"
       viewBox="0 0 1440 800"
       preserveAspectRatio="xMidYMid slice"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
         <pattern id="pcb-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-          <circle cx="20" cy="20" r="0.7" fill="#1a2e44" />
+          <circle
+            cx="20"
+            cy="20"
+            r="0.8"
+            fill="var(--color-tech-600)"
+            opacity="0.55"
+          />
         </pattern>
         <filter id="trace-glow">
           <feGaussianBlur in="SourceGraphic" stdDeviation="1.8" result="blur" />
@@ -55,23 +62,31 @@ function PCBBackground() {
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
-        <radialGradient id="center-vignette" cx="50%" cy="50%" r="55%">
-          <stop offset="0%" stopColor="#080c12" stopOpacity="0.55" />
-          <stop offset="100%" stopColor="#080c12" stopOpacity="0" />
-        </radialGradient>
       </defs>
 
       <rect width="1440" height="800" fill="url(#pcb-grid)" />
 
       {/* Base traces */}
-      <g stroke="#1a3352" strokeWidth="1.5" fill="none" strokeLinecap="square">
+      <g
+        stroke="var(--color-tech-600)"
+        strokeWidth="1.6"
+        fill="none"
+        strokeLinecap="square"
+        opacity="0.85"
+      >
         {baseTraces.map((d, i) => (
           <path key={i} d={d} />
         ))}
       </g>
 
       {/* Faint secondary traces */}
-      <g stroke="#12243a" strokeWidth="1" fill="none" strokeLinecap="square" opacity="0.7">
+      <g
+        stroke="var(--color-tech-700)"
+        strokeWidth="1.2"
+        fill="none"
+        strokeLinecap="square"
+        opacity="0.8"
+      >
         <path d="M 0,700 H 80 V 650 H 160 V 590" />
         <path d="M 0,480 H 50 V 430" />
         <path d="M 1440,600 H 1410 V 560" />
@@ -79,7 +94,14 @@ function PCBBackground() {
       </g>
 
       {/* Active/glowing traces */}
-      <g stroke="#2d6a8a" strokeWidth="2" fill="none" strokeLinecap="square" filter="url(#trace-glow)" opacity="0.65">
+      <g
+        stroke="var(--color-tech-300)"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="square"
+        filter="url(#trace-glow)"
+        opacity="0.95"
+      >
         {activeTraces.map((d, i) => (
           <path key={i} d={d} />
         ))}
@@ -88,36 +110,71 @@ function PCBBackground() {
       {/* Vias */}
       {vias.map(([cx, cy], i) => (
         <g key={i}>
-          <circle cx={cx} cy={cy} r="5.5" stroke="#1e3d5c" strokeWidth="1.5" fill="#0a1020" />
-          <circle cx={cx} cy={cy} r="2.5" fill="#1a3352" />
+          <circle
+            cx={cx}
+            cy={cy}
+            r="5.5"
+            stroke="var(--color-tech-400)"
+            strokeWidth="1.5"
+            fill="var(--color-navy-800)"
+          />
+          <circle
+            cx={cx}
+            cy={cy}
+            r="2.5"
+            fill={
+              i % 7 === 0
+                ? "var(--color-signal-400)"
+                : "var(--color-tech-300)"
+            }
+          />
         </g>
       ))}
 
       {/* IC footprint */}
-      <g fill="#0a1020" stroke="#1e3d5c" strokeWidth="1">
+      <g
+        fill="var(--color-navy-800)"
+        stroke="var(--color-tech-500)"
+        strokeWidth="1.2"
+      >
         {[-12, -6, 0, 6, 12].map((dy) => (
           <g key={dy}>
             <rect x={340} y={120 + dy - 3} width={14} height={6} rx="1" />
             <rect x={374} y={120 + dy - 3} width={14} height={6} rx="1" />
           </g>
         ))}
-        <rect x={354} y={104} width={20} height={30} rx="1" stroke="#162840" />
+        <rect
+          x={354}
+          y={104}
+          width={20}
+          height={30}
+          rx="1"
+          stroke="var(--color-tech-400)"
+        />
       </g>
 
       {/* Resistor pads */}
-      <g fill="#0a1020" stroke="#1e3d5c" strokeWidth="1">
+      <g
+        fill="var(--color-navy-800)"
+        stroke="var(--color-tech-400)"
+        strokeWidth="1.2"
+      >
         <rect x={833} y={172} width={10} height={14} rx="1" />
         <rect x={849} y={172} width={10} height={14} rx="1" />
       </g>
 
       {/* Silkscreen labels */}
-      <text x="330" y="103" fontFamily="'JetBrains Mono', monospace" fontSize="9" fill="#1a3352" opacity="0.9">U4</text>
-      <text x="835" y="167" fontFamily="'JetBrains Mono', monospace" fontSize="9" fill="#1a3352" opacity="0.9">R22</text>
-      <text x="838" y="540" fontFamily="'JetBrains Mono', monospace" fontSize="9" fill="#1a3352" opacity="0.9">J1</text>
-      <text x="1108" y="738" fontFamily="'JetBrains Mono', monospace" fontSize="9" fill="#1a3352" opacity="0.9">C6</text>
-
-      {/* Center vignette for text contrast */}
-      <rect width="1440" height="800" fill="url(#center-vignette)" />
+      <g
+        fill="var(--color-tech-300)"
+        opacity="0.75"
+        fontFamily="'IBM Plex Mono', monospace"
+        fontSize="9"
+      >
+        <text x="330" y="103">U4</text>
+        <text x="835" y="167">R22</text>
+        <text x="838" y="540">J1</text>
+        <text x="1108" y="738">C6</text>
+      </g>
     </svg>
   )
 }

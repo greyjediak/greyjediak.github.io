@@ -14,8 +14,9 @@ const honors = [
 ];
 
 const positions = [
-  "IEEE Secretary, University of Alabama Chapter",
-  "Research Experiences for Undergraduates — Dr. Edward Sazonov",
+    "University of Alabama ECE Ambassador",
+    "IEEE Secretary, University of Alabama Chapter",
+    "Research Experiences for Undergraduates — Dr. Edward Sazonov",
 ];
 
 const playlists = [
@@ -54,8 +55,8 @@ export default function AboutPage() {
             When I&apos;m not studying or working, I&apos;m usually playing
             guitar (badly), dialing in espresso for latte art, or hanging out
             with my new cat. This summer, I&apos;m hoping to finish two sewing
-            projects, get back into the gym, and build out my personal trainer
-            app.
+            projects, build out a couple keyboards, and read the pile of books I&^apos;ve
+            collected over the semester.
           </p>
         </div>
 

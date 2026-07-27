@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
-import FlipCard from "./components/cards/FlipCard";
 import PageContainer from "./components/layout/PageContainer";
 import PageHeader from "./components/layout/PageHeader";
+import TravelGallery from "./components/media/TravelGallery";
 import VideoGrid from "./components/media/VideoGrid";
 import { travels } from "./data/travels";
 
@@ -59,20 +59,11 @@ export default function TravelPage() {
           <PageHeader
             eyebrow="Gallery"
             title="Photos"
-            description="Hover or focus a photo to read its story. Select it to view the full-size image."
+            description="Stories appear below each photo on smaller screens and on the reverse of each photo on larger screens."
           />
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {travel.images.map((image, index) => (
-              <FlipCard
-                key={`${image.src}-${index}`}
-                image={image.src}
-                alt={image.alt}
-                title={image.title}
-                description={image.text}
-                href={image.src}
-              />
-            ))}
+          <div className="mt-8">
+            <TravelGallery images={travel.images} />
           </div>
         </section>
       )}
