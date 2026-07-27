@@ -28,12 +28,24 @@ function getInitialTheme() {
 
 export default function Navbar() {
   const [theme, setTheme] = useState(getInitialTheme);
+  const [menuOpen, setMenuOpen] = useState(false);
   const isDark = theme === "dark";
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;
   }, [theme]);
+
+  useEffect(() => {
+    function closeOnEscape(event) {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    }
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, []);
 
   function toggleTheme() {
     const nextTheme = isDark ? "light" : "dark";
@@ -52,6 +64,7 @@ export default function Navbar() {
       <div className="mx-auto flex min-h-18 max-w-6xl items-center justify-between gap-4 px-6">
         <Link
           to="/"
+          onClick={() => setMenuOpen(false)}
           className="shrink-0 font-header text-2xl font-medium tracking-tight text-ink"
         >
           Lindsey B.
@@ -75,6 +88,19 @@ export default function Navbar() {
 
           <button
             type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label={
+              menuOpen ? "Close navigation menu" : "Open navigation menu"
+            }
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            className="inline-flex size-10 items-center justify-center rounded-full border border-line bg-surface text-ink transition hover:border-accent hover:bg-accent-soft hover:text-accent-ink sm:hidden"
+          >
+            {menuOpen ? <CloseIcon /> : <MenuIcon />}
+          </button>
+
+          <button
+            type="button"
             onClick={toggleTheme}
             aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
             aria-pressed={isDark}
@@ -85,7 +111,60 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
+      {menuOpen && (
+        <nav
+          id="mobile-navigation"
+          aria-label="Mobile navigation"
+          className="border-t border-line bg-page px-6 py-4 sm:hidden"
+        >
+          <div className="mx-auto flex max-w-6xl flex-col gap-2">
+            {links.map((link) => (
+              <NavLink
+                key={link.label}
+                to={link.to}
+                onClick={() => setMenuOpen(false)}
+                className="rounded-xl px-4 py-3 font-body text-base text-muted transition hover:bg-surface hover:text-ink"
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </div>
+        </nav>
+      )}
     </header>
+  );
+}
+
+function MenuIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="size-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    >
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="size-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    >
+      <path d="m6 6 12 12M18 6 6 18" />
+    </svg>
   );
 }
 
