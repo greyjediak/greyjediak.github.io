@@ -41,6 +41,26 @@ export const projects = [
             }
         ]
     },
+      { // TODO; add details for project
+        id: "gbr-toy",
+        title: "GBR Toy - Embedded Gift",
+        subtitle: "ESP32-S3 | Adafruit TFT | Aesprite",
+        image: "/assets/labstuff/stm32reactboardsetup.jpg",
+        summary: "A custom ESP project utilizing an LCD screen and hand drawn sprites",
+        details: "As a gift to another engineer, this toy featured a jumping game styled to look like a PCB, offscreen sprite drawing for smooth rendering, and lots of little engineering jokes.",
+        images: [],
+        videos: [
+            {},
+        ],
+        links: [
+            {   
+                label: "Github Code",
+                url: "https://github.com/greyjediak/GEEBER_Toy",
+                type: "Code"
+            },
+
+        ]
+    },
     {
         id: "cleanroom",
         title: "Cleanroom Research",

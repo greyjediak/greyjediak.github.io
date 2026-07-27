@@ -1,111 +1,209 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap");
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+@import "tailwindcss";
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@theme {
+  /* Typography */
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-header: "IBM Plex Serif", Georgia, serif;
+  --font-mono: "IBM Plex Mono", monospace;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+  /*
+   * Palette primitives
+   *
+   * Use these when a particular shade matters (illustrations, gradients,
+   * charts). Components should normally use the semantic colors below.
+   */
+  --color-navy-50: #edeff2;
+  --color-navy-100: #c0c8d5;
+  --color-navy-200: #95a3b8;
+  --color-navy-300: #6f819f;
+  --color-navy-400: #4f5f79;
+  --color-navy-500: #303b4d;
+  --color-navy-600: #151b25;
+  --color-navy-700: #101722;
+  --color-navy-800: #0a1019;
+  --color-navy-900: #060b12;
+  --color-navy-950: #03070c;
+
+  --color-tech-50: #eaf7ff;
+  --color-tech-100: #c8e5f7;
+  --color-tech-200: #7cc3ed;
+  --color-tech-300: #4c9ecb;
+  --color-tech-400: #3a7b9f;
+  --color-tech-500: #286f9d;
+  --color-tech-600: #275772;
+  --color-tech-700: #174a68;
+  --color-tech-800: #143344;
+  --color-tech-900: #0b2330;
+  --color-tech-950: #04131b;
+
+  --color-violet-50: #f3f1ff;
+  --color-violet-100: #e9e5ff;
+  --color-violet-200: #d2c9ff;
+  --color-violet-300: #b3a4f5;
+  --color-violet-400: #8d79df;
+  --color-violet-500: #6957c8;
+  --color-violet-600: #5543af;
+  --color-violet-700: #42338d;
+  --color-violet-800: #30266a;
+  --color-violet-900: #211a49;
+  --color-violet-950: #130f2d;
+
+  --color-signal-50: #fffbeb;
+  --color-signal-100: #fff3bf;
+  --color-signal-200: #ffe58a;
+  --color-signal-300: #f8d45c;
+  --color-signal-400: #f4c542;
+  --color-signal-500: #dcae26;
+  --color-signal-600: #af8216;
+  --color-signal-700: #806014;
+  --color-signal-800: #6b5310;
+  --color-signal-900: #4a390c;
+  --color-signal-950: #2b2105;
+
+  --color-neutral-50: #f7f7f2;
+  --color-neutral-100: #edf0f0;
+  --color-neutral-200: #cbd3df;
+  --color-neutral-300: #9ba3a8;
+  --color-neutral-400: #7b8285;
+  --color-neutral-500: #595f61;
+  --color-neutral-600: #383b3d;
+  --color-neutral-700: #292c2e;
+  --color-neutral-800: #191b1c;
+  --color-neutral-900: #101213;
+  --color-neutral-950: #090a0b;
+
+  /*
+   * Semantic tokens
+   *
+   * These generate utilities such as bg-page, text-ink, border-line,
+   * bg-action, text-accent, and ring-focus.
+   */
+  --color-page: var(--color-neutral-50);
+  --color-surface: #ffffff;
+  --color-surface-subtle: var(--color-neutral-100);
+  --color-surface-raised: #ffffff;
+  --color-surface-inverse: var(--color-navy-700);
+
+  --color-ink: var(--color-navy-600);
+  --color-muted: var(--color-navy-400);
+  --color-quiet: var(--color-neutral-500);
+  --color-inverse: var(--color-neutral-50);
+
+  --color-line: var(--color-neutral-200);
+  --color-line-strong: var(--color-navy-200);
+  --color-line-inverse: var(--color-navy-500);
+
+  /* Blue communicates actions: links, buttons, and selected states. */
+  --color-action: var(--color-tech-500);
+  --color-action-hover: var(--color-tech-700);
+  --color-action-active: var(--color-tech-800);
+  --color-action-soft: var(--color-tech-100);
+  --color-action-ink: var(--color-tech-800);
+
+  /* Violet communicates identity: labels, tags, and creative details. */
+  --color-accent: var(--color-violet-500);
+  --color-accent-hover: var(--color-violet-700);
+  --color-accent-soft: var(--color-violet-100);
+  --color-accent-ink: var(--color-violet-800);
+
+  /* Yellow is a sparse signal: status, novelty, and small moments of energy. */
+  --color-signal: var(--color-signal-400);
+  --color-signal-hover: var(--color-signal-500);
+  --color-signal-soft: var(--color-signal-100);
+  --color-signal-ink: var(--color-signal-950);
+
+  --color-focus: var(--color-violet-500);
+
+  /* Compatibility name already used by the Navbar and page labels. */
+  --color-eyebrow: var(--color-accent);
+
+  /* Technical artwork tokens for the PCB background and future diagrams. */
+  --color-diagram-canvas: var(--color-navy-700);
+  --color-diagram-line: var(--color-tech-800);
+  --color-diagram-trace: var(--color-tech-400);
+  --color-diagram-node: var(--color-signal-400);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+
+  button,
+  a {
+    font: inherit;
+  }
+
+  :where(a, button, input, textarea, select):focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/*
+ * Optional dark theme. Set data-theme="dark" on <html> to switch the same
+ * semantic Tailwind utilities without rewriting component class names.
+ */
+@layer base {
+  :root[data-theme="dark"] {
+    --color-page: var(--color-navy-800);
+    --color-surface: var(--color-navy-700);
+    --color-surface-subtle: var(--color-navy-600);
+    --color-surface-raised: var(--color-navy-600);
+    --color-surface-inverse: var(--color-neutral-50);
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
+    --color-ink: var(--color-neutral-50);
+    --color-muted: var(--color-navy-100);
+    --color-quiet: var(--color-neutral-300);
+    --color-inverse: var(--color-navy-700);
 
-body {
-  margin: 0;
-}
+    --color-line: var(--color-navy-500);
+    --color-line-strong: var(--color-navy-300);
+    --color-line-inverse: var(--color-neutral-200);
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
+    --color-action: var(--color-tech-200);
+    --color-action-hover: var(--color-tech-100);
+    --color-action-active: var(--color-tech-50);
+    --color-action-soft: var(--color-tech-900);
+    --color-action-ink: var(--color-tech-100);
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
+    --color-accent: var(--color-violet-300);
+    --color-accent-hover: var(--color-violet-200);
+    --color-accent-soft: var(--color-violet-900);
+    --color-accent-ink: var(--color-violet-100);
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+    --color-signal: var(--color-signal-300);
+    --color-signal-hover: var(--color-signal-200);
+    --color-signal-soft: var(--color-signal-900);
+    --color-signal-ink: var(--color-signal-100);
+
+    --color-focus: var(--color-signal-300);
+    --color-eyebrow: var(--color-accent);
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+
+@utility preserve-3d {
+  transform-style: preserve-3d;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+@utility backface-hidden {
+  backface-visibility: hidden;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+@utility rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+@utility perspective-card {
+  perspective: 1000px;
 }

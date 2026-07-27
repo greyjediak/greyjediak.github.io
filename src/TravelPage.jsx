@@ -1,91 +1,90 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import FlipCard from "./components/cards/FlipCard";
+import PageContainer from "./components/layout/PageContainer";
+import PageHeader from "./components/layout/PageHeader";
+import VideoGrid from "./components/media/VideoGrid";
 import { travels } from "./data/travels";
 
-function TravelImageCard({ image }) {
-  return (
-    <a
-      href={image.src}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flip-card"
-    >
-      <div className="flip-card-inner">
-        <div className="flip-card-front">
-          <img src={image.src} alt={image.alt || image.title} loading="lazy" />
-        </div>
-
-        <div className="flip-card-back">
-          <h3>{image.title}</h3>
-          <p>{image.text}</p>
-        </div>
-      </div>
-    </a>
-  );
-}
-
-function TravelPage() {
+export default function TravelPage() {
   const { id } = useParams();
-  const travel = travels.find((t) => t.id === id);
+  const travel = travels.find((item) => item.id === id);
 
   if (!travel) {
     return (
-      <main className="container">
-        <h1>Place not found</h1>
-      </main>
+      <PageContainer className="py-24 text-center">
+        <p className="font-mono text-sm uppercase tracking-widest text-accent">
+          404
+        </p>
+        <h1 className="mt-3 font-header text-4xl text-ink">
+          Place not found
+        </h1>
+        <Link
+          to="/about#travels"
+          className="mt-6 inline-flex text-action underline-offset-4 hover:text-action-hover hover:underline"
+        >
+          Return to travels
+        </Link>
+      </PageContainer>
     );
   }
-  
+
   return (
-    <main className="container project-page">
-      <h1>{travel.title}</h1>
-      <p className="muted">{travel.subtitle}</p>
+    <PageContainer className="py-16 sm:py-24">
+      <PageHeader
+        eyebrow="Travel"
+        title={travel.title}
+        description={travel.subtitle}
+        as="h1"
+      />
 
-      <section className="about-hero">
-        <div className="about-photo-wrap">
-          <img src={travel.image} alt={travel.title} className="about-photo" />
-        </div>
-      </section>
-    
-      <section>
-        <h2>Overview</h2>
-         <p>{travel.summary}</p>
-      </section>
+      {travel.image && (
+        <img
+          src={travel.image}
+          alt={travel.title}
+          className="mt-10 aspect-video w-full rounded-2xl border border-line object-cover"
+        />
+      )}
 
-        {travel.images?.length > 0 && (
-            <section>
-                <h2>Photos</h2>
-                <div className="flip-grid">
-                    {travel.images.map((image) => (
-                        <TravelImageCard image={image} key={image.src} />
-                    ))}
-                </div>
-            </section>
-        )}  
+      {travel.summary && (
+        <section className="py-16">
+          <PageHeader eyebrow="Overview" title="About this trip" />
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-muted">
+            {travel.summary}
+          </p>
+        </section>
+      )}
 
-      
-      {travel.videos?.length > 0 && (
-        <section className="section">
-          <div className="section-heading">
-            <p className="eyebrow">Videos</p>
-            <h2 className="section-title">Demos and Animations</h2>
-          </div>
-          
-          <div className="video-grid">
-            {travel.videos.map((video, index) => (
-              <figure className="video-card" key={index}>
-                <video controls preload="metadata">
-                  <source src={video.src} type="video/mp4" />
-                  Your browser doesn't support the video tag.
-                </video>
-                {video.caption && <figcaption>{video.caption}</figcaption>}
-              </figure>
+      {travel.images?.length > 0 && (
+        <section className="py-16">
+          <PageHeader
+            eyebrow="Gallery"
+            title="Photos"
+            description="Hover or focus a photo to read its story. Select it to view the full-size image."
+          />
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {travel.images.map((image, index) => (
+              <FlipCard
+                key={`${image.src}-${index}`}
+                image={image.src}
+                alt={image.alt}
+                title={image.title}
+                description={image.text}
+                href={image.src}
+              />
             ))}
           </div>
         </section>
       )}
 
-    </main>
+      {travel.videos?.length > 0 && (
+        <section className="py-16">
+          <PageHeader eyebrow="Videos" title="Trip videos" />
+          <div className="mt-8">
+            <VideoGrid videos={travel.videos} />
+          </div>
+        </section>
+      )}
+    </PageContainer>
   );
 }
-
-export default TravelPage;
