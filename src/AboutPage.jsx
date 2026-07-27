@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import FlipCard from "./components/cards/FlipCard";
+import TravelCard from "./components/cards/TravelCard";
 import PageContainer from "./components/layout/PageContainer";
 import PageHeader from "./components/layout/PageHeader";
 import { coffeeCards } from "./data/coffeeCards";
@@ -55,7 +56,7 @@ export default function AboutPage() {
             When I&apos;m not studying or working, I&apos;m usually playing
             guitar (badly), dialing in espresso for latte art, or hanging out
             with my new cat. This summer, I&apos;m hoping to finish two sewing
-            projects, build out a couple keyboards, and read the pile of books I&^apos;ve
+            projects, build out a couple keyboards, and read the pile of books I've
             collected over the semester.
           </p>
         </div>
@@ -166,36 +167,18 @@ export default function AboutPage() {
         />
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {travels.map((travel) => (
-            <Link
-              to={`/travels/${travel.id}`}
-              key={travel.id}
-              className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-surface transition duration-200 hover:-translate-y-1 hover:border-line-strong hover:shadow-xl"
-            >
-              {travel.image ? (
-                <img
-                  src={travel.image}
-                  alt={travel.title}
-                  loading="lazy"
-                  className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-                />
-              ) : (
-                <div className="flex aspect-[4/3] items-center justify-center bg-surface-subtle font-mono text-sm uppercase tracking-widest text-muted">
-                  Photo coming soon
-                </div>
-              )}
-
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="font-header text-2xl text-ink">
-                  {travel.title}
-                </h3>
-                <p className="mt-2 leading-7 text-muted">{travel.subtitle}</p>
-                <span className="mt-auto inline-flex items-center gap-2 pt-5 font-mono text-sm font-medium text-action">
-                  View trip <span className="text-signal">→</span>
-                </span>
-              </div>
-            </Link>
+          {travels.slice(0, 3).map((travel) => (
+            <TravelCard key={travel.id} travel={travel} />
           ))}
+        </div>
+        <div className="mt-10">
+          <Link
+            to="/travels"
+            className="inline-flex items-center gap-2 rounded-full bg-action px-6 py-3 font-medium text-white transition hover:-translate-y-0.5 hover:bg-action-hover"
+          >
+            More travel
+            <span className="text-signal" aria-hidden="true">→</span>
+          </Link>
         </div>
       </section>
 
