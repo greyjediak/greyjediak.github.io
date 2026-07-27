@@ -61,16 +61,16 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-page/90 backdrop-blur">
-      <div className="mx-auto flex min-h-18 max-w-6xl items-center justify-between gap-4 px-6">
+      <div className="mx-auto flex min-h-18 w-full min-w-0 max-w-6xl items-center justify-between gap-3 px-4 sm:gap-4 sm:px-6">
         <Link
           to="/"
           onClick={() => setMenuOpen(false)}
-          className="shrink-0 font-header text-2xl font-medium tracking-tight text-ink"
+          className="min-w-0 truncate font-header text-xl font-medium tracking-tight text-ink sm:text-2xl"
         >
           Lindsey B.
         </Link>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <nav
             aria-label="Primary navigation"
             className="hidden items-center gap-1 font-body text-sm sm:flex"
@@ -116,7 +116,7 @@ export default function Navbar() {
         <nav
           id="mobile-navigation"
           aria-label="Mobile navigation"
-          className="border-t border-line bg-page px-6 py-4 sm:hidden"
+          className="border-t border-line bg-page px-4 py-4 sm:hidden"
         >
           <div className="mx-auto flex max-w-6xl flex-col gap-2">
             {links.map((link) => (

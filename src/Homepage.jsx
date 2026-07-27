@@ -15,7 +15,7 @@ export default function Homepage() {
           className="absolute inset-0 bg-gradient-to-r from-navy-800/90 via-navy-800/55 to-transparent"
         />
 
-        <div className="relative z-10 mx-auto flex min-h-[440px] w-full max-w-6xl items-center px-6 py-16 sm:min-h-[500px] sm:py-20">
+        <div className="relative z-10 mx-auto flex min-h-[440px] w-full min-w-0 max-w-6xl items-center px-4 py-16 sm:min-h-[500px] sm:px-6 sm:py-20">
           <PageHeader
             eyebrow="Computer Engineering Student"
             title="Welcome to Lindsey B's Portfolio"

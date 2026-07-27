@@ -6,14 +6,14 @@ export default function PageHeader({
     inverse = false,
 }) {
     return (
-        <header className="max-w-3xl">
+        <header className="min-w-0 max-w-3xl">
             {eyebrow && (
                 <p className={`font-mono text-sm font-medium uppercase tracking-[0.14em] ${inverse ? "text-violet-300" : "text-eyebrow"}`}>
                     {eyebrow}
                 </p>
             )}
 
-            <Heading className={`mt-3 font-header text-4xl font-medium tracking-tight sm:text-5xl ${inverse ? "text-neutral-50" : "text-ink"}`}>
+            <Heading className={`mt-3 break-words font-header text-4xl font-medium tracking-tight sm:text-5xl ${inverse ? "text-neutral-50" : "text-ink"}`}>
                 {title}
             </Heading>
 
