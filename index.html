@@ -4,11 +4,32 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (() => {
+        let savedTheme;
+
+        try {
+          savedTheme = localStorage.getItem("theme");
+        } catch {
+          savedTheme = null;
+        }
+
+        const theme =
+          savedTheme === "light" || savedTheme === "dark"
+            ? savedTheme
+            : matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
     <title>portfolio-react</title>
-    <script type="module" crossorigin src="/assets/index-Bj38LoTi.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CjNwBDpS.css">
+    <script type="module" crossorigin src="/assets/index-2s2dAA1o.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CJLOXqU-.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
   </body>
 </html>
