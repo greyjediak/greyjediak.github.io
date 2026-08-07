@@ -62,7 +62,7 @@ export default function AboutPage() {
         </div>
 
         <img
-          src="/assets/about/meandsupie.JPG"
+          src="/assets/about/headshot2.JPG"
           alt="Lindsey and Supie"
           className="aspect-[4/5] w-full max-w-md justify-self-center rounded-2xl border border-line object-cover object-center shadow-lg lg:justify-self-end"
         />
