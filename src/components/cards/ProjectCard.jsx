@@ -11,7 +11,7 @@ export default function ProjectCard({ project }) {
                     src={project.image}
                     alt={project.title}
                     loading="lazy"
-                    className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                    className={`aspect-[4/3] w-full transition duration-300 group-hover:scale-[1.03] ${project.coverClass ?? "object-cover"}`}
                 />
             </div>
 

@@ -1,8 +1,8 @@
-export default function MedaiGallery({ images = [] }) {
+export default function MediaGallery({ images = [] }) {
     if (!images.length) return null;
 
     return (
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className={`grid gap-6 ${images.length > 1 ? "sm:grid-cols-2" : "max-w-xl"}`}>
             {images.map((image) => (
                 <figure
                     key={image.src}
@@ -18,7 +18,7 @@ export default function MedaiGallery({ images = [] }) {
                             src={image.src}
                             alt={image.caption || "Project image"}
                             loading="lazy"
-                            className="aspect-[4/3] w-full object-cover transition duration-300 hover:scale-[1.02]"
+                            className={`aspect-[4/3] w-full transition duration-300 hover:scale-[1.02] ${image.diagram ? "bg-white object-contain p-2" : "object-cover"}`}
                         />
                     </a>
                     {image.caption && (

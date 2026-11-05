@@ -4,6 +4,9 @@ import ProjectCard from "./components/cards/ProjectCard";
 import PCBBackground from "./components/PCBTraceBG";
 import { projects } from "./data/projects";
 
+const featuredProjects = projects.filter((project) => project.featured);
+const moreProjects = projects.filter((project) => !project.featured);
+
 export default function Homepage() {
   return (
     <main>
@@ -27,7 +30,7 @@ export default function Homepage() {
       </section>
 
       <PageContainer as="div">
-        <section id="projects" className="py-16 sm:py-24">
+        <section id="projects" className="scroll-mt-20 py-16 sm:py-24">
           <PageHeader
             eyebrow="Work"
             title="Projects"
@@ -35,7 +38,17 @@ export default function Homepage() {
           />
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+
+          <div className="mt-16">
+            <PageHeader eyebrow="More" title="Mini projects" />
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {moreProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>

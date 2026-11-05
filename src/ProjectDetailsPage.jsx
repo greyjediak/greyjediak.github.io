@@ -3,6 +3,7 @@ import { projects } from "./data/projects";
 import PageContainer from "./components/layout/PageContainer";
 import PageHeader from "./components/layout/PageHeader";
 import MediaGallery from "./components/media/MediaGallery";
+import ProjectHistory from "./components/media/ProjectHistory";
 import VideoGrid from "./components/media/VideoGrid";
 
 function ProjectPage() {
@@ -33,7 +34,7 @@ function ProjectPage() {
         <img
           src={project.image}
           alt={project.title}
-          className="mt-10 aspect-video w-full rounded-2xl border border-line object-cover"
+          className={`mt-10 aspect-video w-full rounded-2xl border border-line ${project.coverClass ?? "object-cover"}`}
         />
 
         <div className="mt-16 grid gap-12 lg:grid-cols-[1fr_2fr]">
@@ -47,6 +48,15 @@ function ProjectPage() {
           </h2>
           <p className="leading-8 text-muted">{project.details}</p>
         </div>
+
+        {project.history?.length > 0 && (
+          <section className="pt-16">
+            <PageHeader eyebrow="History" title="How it evolved" />
+            <div className="mt-8">
+              <ProjectHistory steps={project.history} />
+            </div>
+          </section>
+        )}
 
         {project.images?.length > 0 && (
           <section className="py-16">

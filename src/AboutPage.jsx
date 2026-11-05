@@ -100,7 +100,7 @@ export default function AboutPage() {
             </p>
             <p className="mt-4 leading-7 text-muted">
               Dialing in espresso feels like a lost art amid the bustle of
-              fast-paced coffee.
+              fast-paced, chain coffee.
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">

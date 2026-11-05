@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 const links = [
   { label: "Projects", to: "/#projects" },
   { label: "About", to: "/about" },
+  // { label: "Writings", to:"/writings"}, // TODO: add back once the page and route exist
   { label: "Travel", to: "/travels" },
   { label: "Contact", to: "/contact" },
 ];
